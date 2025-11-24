@@ -1,6 +1,6 @@
 """
 Phase 4.5: Adversarial Review & Refinement
-Two iterations of Devil's Advocate critique and Development LLM refinement.
+Interactive dialogue between Devil's Advocate and Development LLM with user control.
 """
 
 import json
@@ -50,6 +50,50 @@ def call_development_llm(prompt: str, llm_config: Dict) -> str:
     # Placeholder response
     return f"[PLACEHOLDER: Refined response from {provider} {model}]"
 
+def get_user_comments() -> str:
+    """
+    Get additional comments from user to add to Devil's Advocate critique.
+    
+    Returns:
+        User comments or empty string if none
+    """
+    print("\n" + "="*60)
+    print("USER COMMENTS")
+    print("="*60)
+    print("\nYou can add your own comments on top of the Devil's Advocate critique.")
+    print("This allows you to provide additional guidance or specific concerns.")
+    print("\nOptions:")
+    print("  1. Enter comments (type your feedback, then press Enter twice)")
+    print("  2. Skip (press Enter to continue without comments)")
+    
+    choice = input("\nAdd comments? (y/n): ").lower().strip()
+    
+    if choice != 'y':
+        return ""
+    
+    print("\nEnter your comments (press Enter twice when done):")
+    print("-" * 60)
+    
+    lines = []
+    empty_count = 0
+    
+    while True:
+        line = input()
+        if line == "":
+            empty_count += 1
+            if empty_count >= 2:
+                break
+        else:
+            empty_count = 0
+            lines.append(line)
+    
+    comments = "\n".join(lines).strip()
+    
+    if comments:
+        print(f"\n✓ Added {len(lines)} lines of comments")
+    
+    return comments
+
 def devils_advocate_critique(draft: str, llm_config: Dict, round_num: int) -> str:
     """
     Devil's Advocate LLM critically reviews the evaluation draft.
@@ -57,7 +101,7 @@ def devils_advocate_critique(draft: str, llm_config: Dict, round_num: int) -> st
     Args:
         draft: Current evaluation draft
         llm_config: LLM configuration
-        round_num: Review round number (1 or 2)
+        round_num: Review round number
         
     Returns:
         Critical review text
@@ -83,15 +127,43 @@ Be constructive but thorough in your critique. Focus on improving the quality an
     critique = call_devils_advocate_llm(prompt, llm_config)
     return critique
 
+def combine_critique_with_user_comments(critique: str, user_comments: str) -> str:
+    """
+    Combine Devil's Advocate critique with user comments.
+    
+    Args:
+        critique: Devil's Advocate critique
+        user_comments: User's additional comments
+        
+    Returns:
+        Combined critique
+    """
+    if not user_comments:
+        return critique
+    
+    combined = f"""# Combined Critique
+
+## User Comments
+
+{user_comments}
+
+---
+
+## Devil's Advocate Review
+
+{critique}
+"""
+    return combined
+
 def development_llm_refinement(draft: str, critique: str, llm_config: Dict, round_num: int) -> str:
     """
-    Development LLM refines answers based on Devil's Advocate critique.
+    Development LLM refines answers based on critique.
     
     Args:
         draft: Current evaluation draft
-        critique: Devil's Advocate critique
+        critique: Combined critique (Devil's Advocate + user comments)
         llm_config: LLM configuration
-        round_num: Refinement round number (1 or 2)
+        round_num: Refinement round number
         
     Returns:
         Refined evaluation text
@@ -120,31 +192,62 @@ Maintain the same format as the original draft.
     return refined
 
 def save_critique(critique: str, round_num: int):
-    """Save Devil's Advocate critique to file."""
+    """Save critique to file."""
     filename = f"adversarial_critique_round{round_num}.md"
     output_path = config.DOCS_DIR / filename
     
-    content = f"# Adversarial Critique - Round {round_num}\n\n"
-    content += critique
-    
     with open(output_path, 'w', encoding='utf-8') as f:
-        f.write(content)
+        f.write(critique)
     
     print(f"✓ Critique saved to: {filename}")
 
-def save_refined_draft(draft: str, round_num: int):
+def save_refined_draft(draft: str, version: int) -> Path:
     """Save refined evaluation draft to file."""
-    if round_num == 1:
-        filename = "evaluation_draft_v2.md"
-    else:
-        filename = "evaluation_final.md"
-    
+    filename = f"evaluation_draft_v{version}.md"
     output_path = config.DOCS_DIR / filename
     
     with open(output_path, 'w', encoding='utf-8') as f:
         f.write(draft)
     
     print(f"✓ Refined draft saved to: {filename}")
+    return output_path
+
+def user_wants_to_continue() -> bool:
+    """
+    Ask user if they want to continue with another iteration.
+    
+    Returns:
+        True if user wants to continue, False otherwise
+    """
+    print("\n" + "="*60)
+    print("CONTINUE DIALOGUE?")
+    print("="*60)
+    print("\nThe Development LLM has refined the evaluation based on the critique.")
+    print("\nOptions:")
+    print("  1. Continue - Start another round of critique and refinement")
+    print("  2. Finalize - Accept current version as final")
+    
+    choice = input("\nContinue with another iteration? (y/n): ").lower().strip()
+    
+    return choice == 'y'
+
+def finalize_evaluation(draft: str) -> Path:
+    """
+    Finalize the evaluation and save as final version.
+    
+    Args:
+        draft: Final evaluation draft
+        
+    Returns:
+        Path to final evaluation file
+    """
+    filename = "evaluation_final.md"
+    output_path = config.DOCS_DIR / filename
+    
+    with open(output_path, 'w', encoding='utf-8') as f:
+        f.write(draft)
+    
+    print(f"\n✓ Final evaluation saved to: {filename}")
     return output_path
 
 def identify_shortcomings(final_draft: str, llm_config: Dict) -> Dict:
@@ -154,6 +257,9 @@ def identify_shortcomings(final_draft: str, llm_config: Dict) -> Dict:
     Returns:
         Dictionary with shortcomings and alternative suggestions
     """
+    print("\n" + "="*60)
+    print("FINAL ASSESSMENT")
+    print("="*60)
     print("\nIdentifying remaining shortcomings...")
     
     prompt = f"""Review this final evaluation and identify any remaining shortcomings or gaps:
@@ -180,6 +286,7 @@ def main():
     print("\n" + "="*60)
     print("PHASE 4.5: ADVERSARIAL REVIEW & REFINEMENT")
     print("="*60)
+    print("\nInteractive dialogue with user control")
     
     # Load LLM configuration
     llm_config = load_llm_config()
@@ -196,34 +303,50 @@ def main():
     
     print("✓ Loaded evaluation draft")
     
-    # ITERATION 1
-    print("\n" + "="*60)
-    print("ITERATION 1")
-    print("="*60)
+    # Interactive dialogue loop
+    round_num = 1
+    version = 1
     
-    # Devil's Advocate critique round 1
-    critique_1 = devils_advocate_critique(current_draft, llm_config, 1)
-    save_critique(critique_1, 1)
+    while True:
+        print("\n" + "="*60)
+        print(f"ITERATION {round_num}")
+        print("="*60)
+        
+        # Devil's Advocate critique
+        critique = devils_advocate_critique(current_draft, llm_config, round_num)
+        
+        # Get user comments
+        user_comments = get_user_comments()
+        
+        # Combine critique with user comments
+        combined_critique = combine_critique_with_user_comments(critique, user_comments)
+        
+        # Save combined critique
+        save_critique(combined_critique, round_num)
+        
+        # Development LLM refinement
+        refined_draft = development_llm_refinement(current_draft, combined_critique, llm_config, round_num)
+        
+        # Increment version and save
+        version += 1
+        save_refined_draft(refined_draft, version)
+        
+        # Ask user if they want to continue
+        if not user_wants_to_continue():
+            print("\n✓ User chose to finalize evaluation")
+            current_draft = refined_draft
+            break
+        
+        # Continue with next iteration
+        print("\n✓ Starting next iteration...")
+        current_draft = refined_draft
+        round_num += 1
     
-    # Development LLM refinement round 1
-    refined_draft_1 = development_llm_refinement(current_draft, critique_1, llm_config, 1)
-    save_refined_draft(refined_draft_1, 1)
-    
-    # ITERATION 2
-    print("\n" + "="*60)
-    print("ITERATION 2")
-    print("="*60)
-    
-    # Devil's Advocate critique round 2
-    critique_2 = devils_advocate_critique(refined_draft_1, llm_config, 2)
-    save_critique(critique_2, 2)
-    
-    # Development LLM final refinement
-    final_draft = development_llm_refinement(refined_draft_1, critique_2, llm_config, 2)
-    final_path = save_refined_draft(final_draft, 2)
+    # Finalize evaluation
+    final_path = finalize_evaluation(current_draft)
     
     # Identify remaining shortcomings
-    assessment = identify_shortcomings(final_draft, llm_config)
+    assessment = identify_shortcomings(current_draft, llm_config)
     
     # Save assessment
     assessment_path = config.DOCS_DIR / "shortcomings_assessment.md"
@@ -231,12 +354,12 @@ def main():
         f.write("# Shortcomings Assessment\n\n")
         f.write(assessment['shortcomings'])
     
-    print(f"\n✓ Assessment saved to: shortcomings_assessment.md")
+    print(f"✓ Assessment saved to: shortcomings_assessment.md")
     
     print("\n" + "="*60)
     print("✓ PHASE 4.5 COMPLETE")
     print("="*60)
-    print("\nCompleted 2 iterations of adversarial review")
+    print(f"\nCompleted {round_num} iteration(s) of adversarial review")
     print(f"Final evaluation: {final_path.name}")
     print(f"Recommendation: {assessment['recommendation']}")
     print("\nYou can now proceed to Phase 5 (Final Report)")

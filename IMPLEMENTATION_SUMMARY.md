@@ -35,11 +35,13 @@
 - ✅ Saves to `evaluation_draft.md`
 
 ### Phase 4.5: Adversarial Review (`04.5_adversarial_review.py`)
-- ✅ 2-iteration review process
+- ✅ **Interactive dialogue loop** (user-controlled iterations)
+- ✅ **User can add comments** on top of Devil's Advocate critique
+- ✅ **User decides when to finalize** after each refinement
 - ✅ Devil's Advocate critique
 - ✅ Development LLM refinement
 - ✅ Shortcomings assessment
-- ✅ Saves to `evaluation_final.md`
+- ✅ Saves versioned drafts and final evaluation
 
 ### Phase 5: Final Report (`05_generate_report.py`)
 - ✅ Methodology section

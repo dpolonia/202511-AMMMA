@@ -172,27 +172,26 @@ python 06_create_presentation.py
 
 ### Phase 4.5: Adversarial Review
 
-**Purpose**: Improve answer quality through critical dialogue
+**Purpose**: Improve answer quality through critical dialogue with user control
 
-**Process** (2 iterations):
+**Process** (Interactive Loop):
 
-**Iteration 1**:
-1. Devil's Advocate LLM critiques draft
-2. Development LLM revises answers
-
-**Iteration 2**:
-3. Devil's Advocate performs second review
-4. Development LLM finalizes answers
+**Each Iteration**:
+1. Devil's Advocate LLM critiques current draft
+2. **User can add comments** on top of the critique
+3. Development LLM revises answers based on combined feedback
+4. **User decides** whether to continue or finalize
 
 **Features**:
-- Identifies shortcomings
+- User-controlled iterations (not fixed to 2)
+- User can add specific guidance or concerns
+- Identifies shortcomings after finalization
 - Suggests alternative papers if needed
 
 **Output**: 
-- `adversarial_critique_round1.md`
-- `evaluation_draft_v2.md`
-- `adversarial_critique_round2.md`
-- `evaluation_final.md`
+- `adversarial_critique_round{N}.md` (for each iteration)
+- `evaluation_draft_v{N}.md` (versioned drafts)
+- `evaluation_final.md` (final version)
 - `shortcomings_assessment.md`
 
 ---
