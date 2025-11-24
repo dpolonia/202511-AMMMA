@@ -22,7 +22,7 @@ if os.getenv("AMMMA_RUN_DIR"):
 else:
     OUTPUT_DIR = BASE_DIR
 
-SELECTED_PAPER_DIR = OUTPUT_DIR / "selected_paper"
+SELECTED_PAPER_DIR = OUTPUT_DIR / "03_selected_paper"
 
 # Ensure directories exist
 if not os.getenv("AMMMA_RUN_DIR"):
@@ -135,17 +135,17 @@ LLM_PRICING = {
 # File paths
 PDF_FILES = {
     "class_content": DOCS_DIR / "20241212 SCEE I - AMMMMA.pdf",
-    "evaluation_guide": DOCS_DIR / "MMMAME_EvaluationGuideAndChecklist_2025.pdf",
+    "evaluation_guide": DOCS_DIR / "20241212 SCEE I - AMMMMA - Evaluation.pdf"
 }
 
-# Output files
+# Output Files (Chronologically Numbered)
 OUTPUT_FILES = {
-    "llm_config": OUTPUT_DIR / "llm_config.json",
-    "scopus_results": OUTPUT_DIR / "scopus_results.json",
-    "graded_papers": OUTPUT_DIR / "graded_papers.json",
-    "top_20_papers": OUTPUT_DIR / "top_20_papers.md",
-    "evaluation_draft": OUTPUT_DIR / "evaluation_draft.md",
-    "evaluation_final": OUTPUT_DIR / "evaluation_final.md",
-    "final_report": OUTPUT_DIR / "final_report.md",
-    "presentation": OUTPUT_DIR / "presentation.md",
+    "llm_config": OUTPUT_DIR / "00_llm_config.json",
+    "scopus_results": OUTPUT_DIR / "01_scopus_results.json",
+    "graded_papers": OUTPUT_DIR / "02_graded_papers.json",
+    "top_20_papers": OUTPUT_DIR / "02_top_20_papers.md",
+    "evaluation_draft": OUTPUT_DIR / "04_evaluation_draft.md",
+    "evaluation_final": OUTPUT_DIR / "05_evaluation_final.md",
+    "final_report": OUTPUT_DIR / "05_final_report.md",
+    "presentation": OUTPUT_DIR / "06_presentation.md",
 }

@@ -4,6 +4,7 @@ Interactive dialogue between Devil's Advocate and Development LLM with user cont
 """
 
 import json
+from datetime import datetime
 from pathlib import Path
 from typing import Dict, List
 import config
@@ -22,6 +23,27 @@ def load_evaluation_draft() -> str:
     draft_path = config.OUTPUT_FILES['evaluation_draft']
     try:
         with open(draft_path, 'r', encoding='utf-8') as f:
+            return f.read()
+    except FileNotFoundError:
+        print("❌ ERROR: evaluation_draft.md not found!")
+        print("Please run Phase 4 (04_answer_evaluation.py) first.")
+        return ""
+
+def call_devils_advocate_llm(prompt: str, llm_config: Dict) -> str:
+    """Call Devil's Advocate LLM."""
+    provider = llm_config['devils_advocate']['provider']
+    model = llm_config['devils_advocate']['model_key']
+    return utils.call_llm(prompt, provider, model)
+
+def call_development_llm(prompt: str, llm_config: Dict) -> str:
+    """Call Development LLM."""
+    provider = llm_config['development']['provider']
+    model = llm_config['development']['model_key']
+    return utils.call_llm(prompt, provider, model)
+
+def get_user_comments() -> str:
+    """
+    Get additional comments from user to add to Devil's Advocate critique.
     
     Returns:
         User comments or empty string if none
@@ -260,11 +282,33 @@ Provide:
     
     assessment = call_development_llm(prompt, llm_config)
     
+    # Save assessment
+    filename = "05_shortcomings_assessment.md"
+    output_path = config.OUTPUT_DIR / filename # Save to root run folder
+    
+    with open(output_path, 'w', encoding='utf-8') as f:
+        f.write(assessment)
+        
+    print(f"✓ Assessment saved to: {filename}")
+    
     return {
         'shortcomings': assessment,
         'recommendation': '[PLACEHOLDER: Suitable/Consider alternatives]',
         'alternative_criteria': '[PLACEHOLDER: Criteria if alternatives needed]'
     }
+
+def create_iteration_folder() -> Path:
+    """Create a new iteration folder for this run."""
+    # Use config.OUTPUT_DIR which is set by main.py or env var
+    reviews_dir = config.OUTPUT_DIR / "04.5_adversarial_reviews"
+    reviews_dir.mkdir(exist_ok=True)
+    
+    timestamp = datetime.now().strftime("%H%M%S")
+    iteration_folder = reviews_dir / f"iteration_{timestamp}"
+    iteration_folder.mkdir(exist_ok=True)
+    
+    print(f"\n📂 Created Iteration Folder: 04.5_adversarial_reviews/{iteration_folder.name}")
+    return iteration_folder
 
 def main():
     """Main execution function."""
