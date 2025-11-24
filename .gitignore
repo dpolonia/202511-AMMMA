@@ -28,6 +28,13 @@ final_report.md
 presentation.md
 related_papers_metadata.json
 
+# Iteration folders (Phase 4.5)
+iteration_*/
+adversarial_reviews/
+
+# Run folders
+run_*/
+
 # Selected paper directory
 selected_paper/
 

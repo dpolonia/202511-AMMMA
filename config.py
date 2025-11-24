@@ -14,10 +14,21 @@ load_dotenv()
 BASE_DIR = Path(__file__).parent
 DOCS_DIR = BASE_DIR
 ARCHIVE_DIR = BASE_DIR / "Docs" / "archive"
-SELECTED_PAPER_DIR = BASE_DIR / "selected_paper"
+
+# Determine Output Directory (Run Folder)
+# If AMMMA_RUN_DIR env var is set, use it. Otherwise, use BASE_DIR.
+if os.getenv("AMMMA_RUN_DIR"):
+    OUTPUT_DIR = Path(os.getenv("AMMMA_RUN_DIR"))
+else:
+    OUTPUT_DIR = BASE_DIR
+
+SELECTED_PAPER_DIR = OUTPUT_DIR / "selected_paper"
 
 # Ensure directories exist
-SELECTED_PAPER_DIR.mkdir(exist_ok=True)
+if not os.getenv("AMMMA_RUN_DIR"):
+    # Only create if we are NOT in a run (scripts creating their own dirs)
+    # If we are in a run, main.py handles creation
+    SELECTED_PAPER_DIR.mkdir(exist_ok=True)
 
 # API Keys
 SCOPUS_API_KEY = os.getenv("SCOPUS_API_KEY")
@@ -101,12 +112,12 @@ PDF_FILES = {
 
 # Output files
 OUTPUT_FILES = {
-    "llm_config": DOCS_DIR / "llm_config.json",
-    "scopus_results": DOCS_DIR / "scopus_results.json",
-    "graded_papers": DOCS_DIR / "graded_papers.json",
-    "top_20_papers": DOCS_DIR / "top_20_papers.md",
-    "evaluation_draft": DOCS_DIR / "evaluation_draft.md",
-    "evaluation_final": DOCS_DIR / "evaluation_final.md",
-    "final_report": DOCS_DIR / "final_report.md",
-    "presentation": DOCS_DIR / "presentation.md",
+    "llm_config": OUTPUT_DIR / "llm_config.json",
+    "scopus_results": OUTPUT_DIR / "scopus_results.json",
+    "graded_papers": OUTPUT_DIR / "graded_papers.json",
+    "top_20_papers": OUTPUT_DIR / "top_20_papers.md",
+    "evaluation_draft": OUTPUT_DIR / "evaluation_draft.md",
+    "evaluation_final": OUTPUT_DIR / "evaluation_final.md",
+    "final_report": OUTPUT_DIR / "final_report.md",
+    "presentation": OUTPUT_DIR / "presentation.md",
 }

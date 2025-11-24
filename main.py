@@ -6,7 +6,41 @@ Runs all phases of the paper analysis workflow sequentially.
 import sys
 from pathlib import Path
 
-# Import all phase scripts
+import sys
+import os
+from pathlib import Path
+from datetime import datetime
+
+# Import config first to get base paths, but we'll reload it or set env var before other imports if needed
+# Actually, we need to set env var BEFORE importing config if we want it to pick it up at module level.
+# But config is already imported. We might need to reload it or just rely on the fact that 
+# scripts import config when they run.
+# Since we are running scripts via __import__, they will share the already imported config module.
+# So we need to reload config or modify it directly.
+
+# Better approach: Set env var, then import config.
+# If config is already imported by main, we need to reload it.
+import importlib
+
+def setup_run_environment():
+    """Create run folder and set environment variable."""
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    base_dir = Path(__file__).parent
+    run_dir = base_dir / f"run_{timestamp}"
+    run_dir.mkdir(exist_ok=True)
+    
+    # Set environment variable
+    os.environ["AMMMA_RUN_DIR"] = str(run_dir)
+    
+    # Reload config to pick up the new path
+    if 'config' in sys.modules:
+        importlib.reload(sys.modules['config'])
+    else:
+        import config
+        
+    return run_dir
+
+# Now import config after setup (or it will be reloaded)
 import config
 
 def print_header(phase_name: str):
@@ -49,6 +83,17 @@ def main():
     print("\n" + "="*70)
     print("  PAPER ANALYSIS WORKFLOW - FULL EXECUTION")
     print("="*70)
+    
+    proceed = input("\nProceed with full workflow? (y/n): ").lower().strip()
+    if proceed != 'y':
+        print("Workflow cancelled.")
+        return
+
+    # Setup run environment
+    run_dir = setup_run_environment()
+    print(f"\n📂 Created Run Folder: {run_dir.name}")
+    print(f"   All outputs will be saved to this directory.")
+
     print("\nThis script will run all phases of the workflow:")
     print("  Phase 0: LLM Configuration")
     print("  Phase 1: Search Strategy & Data Retrieval")
@@ -58,11 +103,6 @@ def main():
     print("  Phase 4.5: Adversarial Review & Refinement")
     print("  Phase 5: Final Report Generation")
     print("  Phase 6: Presentation Creation")
-    
-    proceed = input("\nProceed with full workflow? (y/n): ").lower().strip()
-    if proceed != 'y':
-        print("Workflow cancelled.")
-        return
     
     # Phase 0: LLM Configuration
     if not run_phase("0", "LLM Configuration", "00_setup_llms"):

@@ -191,25 +191,41 @@ Maintain the same format as the original draft.
     refined = call_development_llm(prompt, llm_config)
     return refined
 
-def save_critique(critique: str, round_num: int):
-    """Save critique to file."""
+def save_critique(critique: str, round_num: int, iteration_folder: Path):
+    """Save critique to file in iteration folder."""
     filename = f"adversarial_critique_round{round_num}.md"
-    output_path = config.DOCS_DIR / filename
+    output_path = iteration_folder / filename
     
     with open(output_path, 'w', encoding='utf-8') as f:
         f.write(critique)
     
-    print(f"✓ Critique saved to: {filename}")
+    print(f"✓ Critique saved to: {iteration_folder.name}/{filename}")
 
-def save_refined_draft(draft: str, version: int) -> Path:
-    """Save refined evaluation draft to file."""
+def save_user_comments(user_comments: str, round_num: int, iteration_folder: Path):
+    """Save user comments to file in iteration folder."""
+    if not user_comments:
+        return
+    
+    filename = f"user_comments_round{round_num}.md"
+    output_path = iteration_folder / filename
+    
+    content = f"# User Comments - Round {round_num}\n\n"
+    content += user_comments
+    
+    with open(output_path, 'w', encoding='utf-8') as f:
+        f.write(content)
+    
+    print(f"✓ User comments saved to: {iteration_folder.name}/{filename}")
+
+def save_refined_draft(draft: str, version: int, iteration_folder: Path) -> Path:
+    """Save refined evaluation draft to file in iteration folder."""
     filename = f"evaluation_draft_v{version}.md"
-    output_path = config.DOCS_DIR / filename
+    output_path = iteration_folder / filename
     
     with open(output_path, 'w', encoding='utf-8') as f:
         f.write(draft)
     
-    print(f"✓ Refined draft saved to: {filename}")
+    print(f"✓ Refined draft saved to: {iteration_folder.name}/{filename}")
     return output_path
 
 def user_wants_to_continue() -> bool:
@@ -307,10 +323,31 @@ def main():
     round_num = 1
     version = 1
     
+    # Create iteration folder for this run
+    iteration_folder = create_iteration_folder()
+    
+    # Save initial draft to iteration folder
+    initial_draft_path = iteration_folder / "evaluation_draft_v1.md"
+    with open(initial_draft_path, 'w', encoding='utf-8') as f:
+        f.write(current_draft)
+    print(f"✓ Initial draft saved to: {iteration_folder.name}/evaluation_draft_v1.md")
+    
+    # Save iteration metadata
+    iteration_metadata = {
+        'start_time': datetime.now().isoformat(),
+        'llm_config': {
+            'development': llm_config['development'],
+            'devils_advocate': llm_config['devils_advocate']
+        },
+        'iterations': []
+    }
+    
     while True:
         print("\n" + "="*60)
         print(f"ITERATION {round_num}")
         print("="*60)
+        
+        iteration_start = datetime.now()
         
         # Devil's Advocate critique
         critique = devils_advocate_critique(current_draft, llm_config, round_num)
@@ -318,18 +355,30 @@ def main():
         # Get user comments
         user_comments = get_user_comments()
         
+        # Save user comments if provided
+        save_user_comments(user_comments, round_num, iteration_folder)
+        
         # Combine critique with user comments
         combined_critique = combine_critique_with_user_comments(critique, user_comments)
         
         # Save combined critique
-        save_critique(combined_critique, round_num)
+        save_critique(combined_critique, round_num, iteration_folder)
         
         # Development LLM refinement
         refined_draft = development_llm_refinement(current_draft, combined_critique, llm_config, round_num)
         
         # Increment version and save
         version += 1
-        save_refined_draft(refined_draft, version)
+        save_refined_draft(refined_draft, version, iteration_folder)
+        
+        # Record iteration metadata
+        iteration_metadata['iterations'].append({
+            'round': round_num,
+            'start_time': iteration_start.isoformat(),
+            'end_time': datetime.now().isoformat(),
+            'has_user_comments': bool(user_comments),
+            'version': version
+        })
         
         # Ask user if they want to continue
         if not user_wants_to_continue():
@@ -342,25 +391,46 @@ def main():
         current_draft = refined_draft
         round_num += 1
     
-    # Finalize evaluation
-    final_path = finalize_evaluation(current_draft)
+    # Finalize iteration metadata
+    iteration_metadata['end_time'] = datetime.now().isoformat()
+    iteration_metadata['total_rounds'] = round_num
+    iteration_metadata['final_version'] = version
+    
+    # Save iteration metadata
+    metadata_path = iteration_folder / "iteration_metadata.json"
+    with open(metadata_path, 'w', encoding='utf-8') as f:
+        json.dump(iteration_metadata, f, indent=2, ensure_ascii=False)
+    print(f"\n✓ Iteration metadata saved to: {iteration_folder.name}/iteration_metadata.json")
+    
+    # Finalize evaluation (save to iteration folder AND root)
+    final_path_iteration = iteration_folder / "evaluation_final.md"
+    with open(final_path_iteration, 'w', encoding='utf-8') as f:
+        f.write(current_draft)
+    print(f"\n✓ Final evaluation saved to: {iteration_folder.name}/evaluation_final.md")
+    
+    # Also save to root of run folder for easy access
+    final_path_root = config.OUTPUT_FILES['evaluation_final']
+    with open(final_path_root, 'w', encoding='utf-8') as f:
+        f.write(current_draft)
+    print(f"✓ Final evaluation also saved to: evaluation_final.md (run root)")
     
     # Identify remaining shortcomings
     assessment = identify_shortcomings(current_draft, llm_config)
     
-    # Save assessment
-    assessment_path = config.DOCS_DIR / "shortcomings_assessment.md"
+    # Save assessment to iteration folder
+    assessment_path = iteration_folder / "shortcomings_assessment.md"
     with open(assessment_path, 'w', encoding='utf-8') as f:
         f.write("# Shortcomings Assessment\n\n")
         f.write(assessment['shortcomings'])
     
-    print(f"✓ Assessment saved to: shortcomings_assessment.md")
+    print(f"✓ Assessment saved to: {iteration_folder.name}/shortcomings_assessment.md")
     
     print("\n" + "="*60)
     print("✓ PHASE 4.5 COMPLETE")
     print("="*60)
-    print(f"\nCompleted {round_num} iteration(s) of adversarial review")
-    print(f"Final evaluation: {final_path.name}")
+    print(f"\nIteration folder: {iteration_folder.name}")
+    print(f"Completed {round_num} iteration(s) of adversarial review")
+    print(f"Final version: v{version}")
     print(f"Recommendation: {assessment['recommendation']}")
     print("\nYou can now proceed to Phase 5 (Final Report)")
     

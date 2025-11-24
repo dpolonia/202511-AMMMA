@@ -189,10 +189,19 @@ python 06_create_presentation.py
 - Suggests alternative papers if needed
 
 **Output**: 
-- `adversarial_critique_round{N}.md` (for each iteration)
-- `evaluation_draft_v{N}.md` (versioned drafts)
-- `evaluation_final.md` (final version)
-- `shortcomings_assessment.md`
+All outputs are organized into a timestamped **Run Folder** (e.g., `run_20251124_200000/`) created at the start of execution.
+
+Inside the Run Folder:
+- `llm_config.json` - LLM configuration for this run
+- `scopus_results.json` - Search results
+- `graded_papers.json` - Graded papers
+- `selected_paper/` - The chosen paper and its metadata
+- `evaluation_draft.md` - Initial evaluation
+- `adversarial_reviews/` - Container for Phase 4.5 iterations
+  - `iteration_HHMMSS/` - Specific iteration outputs
+- `evaluation_final.md` - Final refined evaluation
+- `final_report.md` - The comprehensive final report
+- `presentation.md` - The generated presentation
 
 ---
 
@@ -254,28 +263,6 @@ python 06_create_presentation.py
 ├── 20241212 SCEE I - AMMMMA.pdf # Class content
 ├── MMMAME_EvaluationGuideAndChecklist_2025.pdf # Evaluation guide
 ├── llm_config.json              # Generated: LLM config
-├── scopus_results.json          # Generated: Search results
-├── graded_papers.json           # Generated: Scored papers
-├── top_20_papers.md             # Generated: Top 20 list
-├── evaluation_draft.md          # Generated: Initial answers
-├── evaluation_final.md          # Generated: Final answers
-├── final_report.md              # Generated: Final deliverable
-├── presentation.md              # Generated: Presentation
-├── Docs/                        # Archive folder
-│   └── archive/                 # Previous work files
-└── selected_paper/              # Generated: Paper files
-    ├── paper.pdf
-    ├── paper_text.txt
-    ├── paper_metadata.json
-    ├── related_papers_metadata.json
-    ├── cited_papers/            # Referenced papers
-    └── citing_papers/           # Papers citing this one
-```
-
-## Customization
-
-### Grading Weights
-
 Phase 2 allows interactive customization of all weights:
 
 ```
