@@ -180,3 +180,115 @@ def count_keyword_matches(text: str, keywords: List[str]) -> int:
     """
     text_lower = text.lower()
     return sum(1 for keyword in keywords if keyword.lower() in text_lower)
+
+class TokenTracker:
+    """
+    Tracks token usage and calculates costs for LLM calls.
+    Singleton instance used across the application.
+    """
+    _instance = None
+    
+    def __new__(cls):
+        if cls._instance is None:
+            cls._instance = super(TokenTracker, cls).__new__(cls)
+            cls._instance.usage = {}  # {model_name: {'input': 0, 'output': 0, 'calls': 0}}
+            cls._instance.alerts = {} # {model_name: last_alert_threshold}
+        return cls._instance
+    
+    def track(self, model: str, input_tokens: int, output_tokens: int):
+        """Record token usage for a model."""
+        if model not in self.usage:
+            self.usage[model] = {'input': 0, 'output': 0, 'calls': 0}
+            self.alerts[model] = 0
+            
+        self.usage[model]['input'] += input_tokens
+        self.usage[model]['output'] += output_tokens
+        self.usage[model]['calls'] += 1
+        
+        # Check for alerts (every 100k total tokens)
+        total_tokens = self.usage[model]['input'] + self.usage[model]['output']
+        threshold = total_tokens // 100000
+        
+        if threshold > self.alerts[model]:
+            self.alerts[model] = threshold
+            print(f"\n[COST ALERT] Usage for {model} exceeded {threshold * 100000} tokens.")
+            cost = self.calculate_cost(model)
+            print(f"Estimated cost so far: ${cost:.2f}")
+    
+    def calculate_cost(self, model: str) -> float:
+        """Calculate estimated cost for a specific model."""
+        if model not in self.usage:
+            return 0.0
+            
+        pricing = config.LLM_PRICING.get(model, {"input": 0, "output": 0})
+        
+        input_cost = (self.usage[model]['input'] / 1_000_000) * pricing['input']
+        output_cost = (self.usage[model]['output'] / 1_000_000) * pricing['output']
+        
+        return input_cost + output_cost
+    
+    def get_total_cost(self) -> float:
+        """Calculate total cost across all models."""
+        return sum(self.calculate_cost(model) for model in self.usage)
+        
+    def get_summary(self) -> Dict:
+        """Get summary of usage and costs."""
+        summary = {}
+        for model, stats in self.usage.items():
+            cost = self.calculate_cost(model)
+            summary[model] = {
+                'calls': stats['calls'],
+                'input_tokens': stats['input_tokens'], # Fix: key is 'input' in usage dict
+                'output_tokens': stats['output_tokens'], # Fix: key is 'output' in usage dict
+                'total_tokens': stats['input'] + stats['output'],
+                'estimated_cost': cost
+            }
+        return summary
+    
+    def save_report(self, filepath: Path):
+        """Save usage report to JSON."""
+        report = {
+            'usage': self.usage,
+            'costs': {model: self.calculate_cost(model) for model in self.usage},
+            'total_cost': self.get_total_cost()
+        }
+        save_json(report, filepath)
+
+# Global tracker instance
+tracker = TokenTracker()
+
+def estimate_tokens(text: str) -> int:
+    """
+    Estimate token count (approx 4 chars per token).
+    In production, use tiktoken or provider-specific tokenizers.
+    """
+    if not text:
+        return 0
+    return len(text) // 4
+
+def call_llm(prompt: str, provider: str, model: str) -> str:
+    """
+    Centralized function to call LLMs with token tracking.
+    
+    Args:
+        prompt: The prompt to send
+        provider: LLM provider (anthropic, openai, google, xai)
+        model: Model identifier
+        
+    Returns:
+        LLM response text
+    """
+    # Estimate input tokens
+    input_tokens = estimate_tokens(prompt)
+    
+    # Placeholder for actual API call
+    # In production, this would call the specific provider API
+    response = f"[PLACEHOLDER: Response from {provider} {model}]\n\nThis is a simulated response to demonstrate the workflow."
+    
+    # Estimate output tokens
+    output_tokens = estimate_tokens(response)
+    
+    # Track usage
+    tracker.track(model, input_tokens, output_tokens)
+    
+    return response

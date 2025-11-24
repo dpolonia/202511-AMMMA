@@ -239,6 +239,23 @@ All scripts and data files are available in the GitHub repository:
 
 For questions about this analysis, please contact [your email].
 """
+
+    # Add Token Usage Appendix
+    report += "\n\n# Appendix: Token Usage & Cost Analysis\n\n"
+    report += "## Estimated Usage Breakdown\n\n"
+    report += "| Model | Calls | Input Tokens | Output Tokens | Total Tokens | Est. Cost |\n"
+    report += "|-------|-------|--------------|---------------|--------------|-----------|\n"
+    
+    total_cost = 0.0
+    
+    for model, stats in utils.tracker.usage.items():
+        cost = utils.tracker.calculate_cost(model)
+        total_cost += cost
+        report += f"| {model} | {stats['calls']} | {stats['input']:,} | {stats['output']:,} | {stats['input'] + stats['output']:,} | ${cost:.4f} |\n"
+    
+    report += f"| **TOTAL** | | | | | **${total_cost:.4f}** |\n"
+    
+    report += "\n*Note: Token counts are estimated (approx. 4 chars/token). Costs are based on standard pricing.*"
     
     # Save report
     output_path = config.OUTPUT_FILES['final_report']
@@ -246,6 +263,11 @@ For questions about this analysis, please contact [your email].
         f.write(report)
     
     print(f"✓ Final report generated: {output_path}")
+    
+    # Save usage data separately
+    usage_path = config.OUTPUT_DIR / "llm_usage.json"
+    utils.tracker.save_report(usage_path)
+    print(f"✓ Token usage data saved to: {usage_path}")
     
     print("\n" + "="*60)
     print("✓ PHASE 5 COMPLETE")

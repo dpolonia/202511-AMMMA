@@ -104,6 +104,34 @@ LLM_MODELS = {
     }
 }
 
+# LLM Pricing (USD per 1M tokens)
+# Estimated/Current pricing as of late 2024/2025
+LLM_PRICING = {
+    # Anthropic
+    "claude-opus-4.1": {"input": 15.0, "output": 75.0},
+    "claude-sonnet-4.5": {"input": 3.0, "output": 15.0},
+    "claude-haiku-4.5": {"input": 0.25, "output": 1.25},
+    
+    # OpenAI
+    "gpt-5.1": {"input": 10.0, "output": 30.0}, # Estimated
+    "gpt-5-mini": {"input": 0.50, "output": 2.00}, # Estimated
+    "gpt-5-nano": {"input": 0.10, "output": 0.40}, # Estimated
+    "gpt-4.1": {"input": 5.0, "output": 15.0},
+    "o1": {"input": 15.0, "output": 60.0},
+    "o1-mini": {"input": 3.0, "output": 12.0},
+    
+    # Google
+    "gemini-3-pro-preview": {"input": 5.0, "output": 15.0}, # Estimated
+    "gemini-2.5-pro": {"input": 3.50, "output": 10.50},
+    "gemini-2.5-flash": {"input": 0.075, "output": 0.30},
+    "gemini-2.5-flash-lite": {"input": 0.05, "output": 0.20},
+    
+    # xAI
+    "grok-4.1": {"input": 5.0, "output": 15.0}, # Estimated
+    "grok-4.1-fast": {"input": 2.0, "output": 8.0}, # Estimated
+    "grok-4": {"input": 5.0, "output": 15.0},
+}
+
 # File paths
 PDF_FILES = {
     "class_content": DOCS_DIR / "20241212 SCEE I - AMMMMA.pdf",

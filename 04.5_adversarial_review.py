@@ -22,37 +22,6 @@ def load_evaluation_draft() -> str:
     draft_path = config.OUTPUT_FILES['evaluation_draft']
     try:
         with open(draft_path, 'r', encoding='utf-8') as f:
-            return f.read()
-    except FileNotFoundError:
-        print("❌ ERROR: evaluation_draft.md not found!")
-        print("Please run Phase 4 (04_answer_evaluation.py) first.")
-        return ""
-
-def call_devils_advocate_llm(prompt: str, llm_config: Dict) -> str:
-    """
-    Call the Devil's Advocate LLM for critical review.
-    Placeholder for actual API integration.
-    """
-    provider = llm_config['devils_advocate']['provider']
-    model = llm_config['devils_advocate']['model_id']
-    
-    # Placeholder response
-    return f"[PLACEHOLDER: Critical review from {provider} {model}]"
-
-def call_development_llm(prompt: str, llm_config: Dict) -> str:
-    """
-    Call the Development LLM for refinement.
-    Placeholder for actual API integration.
-    """
-    provider = llm_config['development']['provider']
-    model = llm_config['development']['model_id']
-    
-    # Placeholder response
-    return f"[PLACEHOLDER: Refined response from {provider} {model}]"
-
-def get_user_comments() -> str:
-    """
-    Get additional comments from user to add to Devil's Advocate critique.
     
     Returns:
         User comments or empty string if none

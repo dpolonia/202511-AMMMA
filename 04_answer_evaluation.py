@@ -57,20 +57,12 @@ def extract_evaluation_questions() -> List[str]:
 
 def call_development_llm(prompt: str, llm_config: Dict) -> str:
     """
-    Call the Development LLM to answer a question.
-    
-    This is a placeholder. In production, you would:
-    1. Check llm_config['development']['provider']
-    2. Use the appropriate API (Anthropic, OpenAI, Google, xAI)
-    3. Make the actual API call with the prompt
-    
-    For now, returns a placeholder response.
+    Call the Development LLM using the centralized utility.
     """
     provider = llm_config['development']['provider']
-    model = llm_config['development']['model_id']
+    model = llm_config['development']['model_key'] # Note: using model_key as identifier for tracking
     
-    # Placeholder response
-    return f"[PLACEHOLDER: This would be the {provider} {model} response to the question]"
+    return utils.call_llm(prompt, provider, model)
 
 def answer_question(question: str, paper_text: str, llm_config: Dict) -> Dict:
     """
