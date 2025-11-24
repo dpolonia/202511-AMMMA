@@ -1,0 +1,159 @@
+20241212 SCEE I - AMMMMA
+Multilevel and Mixed Methods Approaches in Modelling and Evaluation
+Silvina Santana
+Universidade de Aveiro, November 2024
+Multilevel and Mixed Methods Approaches in Modelling and Evaluation
+CONTENT: This material addresses multilevel theory and research in organizations, focusing on foundations and opportunities in management, along with the processes of designing, conducting, and evaluating multilevel studies. It also explores elements of methods for multilevel empirical studies and clarifies what qualifies as mixed methods designs, including their dimensions and how mixed-methods multilevel evaluation can be performed. The content sections include:
+Multilevel theory and research in organizations: foundations and opportunities in management Designing, conducting, and evaluating multilevel studies Elements of methods for multilevel empirical studies Mixed methods: what classifies as mixed methods designs, their dimensions, and approaches to mixed-methods multilevel evaluation
+Multilevel Theory and Research in Organizations: Foundations and Opportunities in Management
+Organizations are inherently multilevel systems. This fundamental assumption has roots in the earliest examples of organizational theory, such as the Hawthorne studies, Homan's theory of group formation, Katz and Kahn's social organization theory, Lewin's field theory, and Likert's theory of organizational effectiveness. All these highlight that organizations function at multiple, nested levels, from individuals to groups to entire firms.
+Contemporary theories of organizational behavior also rely on this axiom. For example, organizational learning theory incorporates contributions from many authors who consider processes at multiple levels within an organization. Yet, there is a recognized issue: !! unfortunately, while the relevance of organizational systems theory is well recognized, its influence in organizational science is just metaphorical !! (2)
+
+An illustrative example: Consider how individual employees' motivations (at the micro-level) can influence team dynamics (meso-level) and ultimately impact organizational culture or strategy (macro-level). Even though early and contemporary research acknowledges this multilevel nature, much of organizational science still deals with levels as if they were isolated domains.
+A Sliced Approach to the Organization
+Often, the "system" of an organization is conceptually sliced into separate levels--individual, group, organization--where each level becomes the domain of different disciplines, theories, and methodologies. For instance, psychologists may focus on the individual level, sociologists on group dynamics, and economists or management scholars on organizationallevel phenomena.
+!! The real organization may be an integrated system, but organization science is not !!
+A New Paradigm in Organizational Science
+There is a need to move toward an integrated conceptual and methodological paradigm in organizational sciences. Such a paradigm would bridge the micro-macro gap in theory and research, ultimately requiring a multilevel paradigm that does justice to the complexity of organizational life. Imagine a scenario where managers can understand how individual employee attitudes aggregate to shape organizational climate, which then influences strategy formulation and performance. This integrated view would help scientists and practitioners alike.
+The Need for Multilevel Research
+There are four main reasons to emphasize multilevel research approaches:
+1. To bridge the micro-macro gap 2. To bridge the research-practice gap 3. To foster the integration of theories from different disciplines, facilitating theoretical
+development and improving knowledge of organizational and business phenomena 4. To avoid the problems and fallacies of analyzing data at the wrong level, such as model
+misspecification
+1. Bridging the Micro-Macro Gap
+Management research has developed with increasing diversity and specialization. Different areas have emerged and consolidated--macro areas (e.g., strategic management, organization theory) focus on organizational-level questions, while micro areas (e.g., organizational psychology, organizational behavior) concentrate on individual and grouplevel phenomena within organizations.
+
+This separation manifests in the formation of specific divisions within management associations, separate conference sessions, and specialized journals. While specialization allows for deep examination of specific topics, it also leads to fragmentation. Multilevel research seeks to integrate these disciplines and levels of analysis, bringing together variables at the micro (individual or group) and macro (organization) levels.
+For example, consider how a firm's strategic decisions (macro) might affect team structures (meso) and employee motivation (micro), and in turn, how employee feedback (micro) might influence changes in corporate strategy (macro). Multilevel approaches enable exploration of such interconnections in a unified framework.
+Continuing to Bridge the Micro-Macro Gap
+While specialization can deepen knowledge in specific areas, it also fosters a micro-macro gap. Multilevel research, by examining joint variables located at different levels and their relationships, helps integrate and bridge this gap. For instance, it can analyze how organizational-level phenomena (like the firm's innovation policy) interact with individuallevel factors (such as employees' skill sets) and group-level variables (like team cohesion).
+Beyond integrating different levels, multilevel research also incorporates multiple levels below the organization (e.g., individuals, work groups) or above it (e.g., industry, cluster/strategic group, location effects). It can also consider how organizational culture (macro) influences individual motivation (micro), which then affects firm performance at both the micro and macro levels.
+2. Bridging the Science-Practice Gap
+Another critical issue in management research is the gap between academic studies and real-world business problems. Overly specialized and fragmented research often fails to address practical, holistic problems that managers face daily. Real organizations deal with multiple levels simultaneously: for example, an organization's culture and its performance management system (both at the organizational level) can directly influence employee motivation and satisfaction (at the individual level), which in turn can affect individual and firm performance. By adopting a multilevel perspective, research becomes more relevant and more closely aligned with the challenges and decisions managers encounter.
+Bridging the Science-Practice Gap (Continued)
+In business practice, multiple levels are always intertwined. Managers, for example, implement human resources management systems at the organizational level and simultaneously must consider the characteristics and behaviors of managers, employees, and their interactions (individual and group levels). Problems and solutions rarely exist solely at a single level. By analyzing several levels together, multilevel research brings science closer to the real-world business practice, promoting relevant and responsible research.
+3. Integration of Theories and Theoretical Development
+
+Multilevel research improves theoretical development by examining phenomena with antecedents and consequences at different levels. This creates opportunities for integrating different disciplines, developing new theoretical insights, and enhancing knowledge in both research and practice.
+For example:
+Case 1: Analyzing impacts of variables located at two or more levels on a dependent variable at one of these levels (direct effects). Case 2: Examining cross-level interactions, where the relationship between two samelevel variables is moderated by a variable at a different level.
+Consider the situation of an international firm trying to boost its performance: managers at different hierarchy levels might influence communication patterns within teams, which then shape individual employee motivation. By studying these interlinked processes, multilevel theory develops more comprehensive explanations of organizational dynamics.
+Further Integration of Theories and Theoretical Development
+Key takeaway: Multilevel research is essential when micro areas attempt to incorporate macro issues and when macro areas incorporate micro issues. It is also crucial in multidisciplinary studies that integrate theories, variables, relationships, and processes from different areas at different levels.
+4. The Problems and Fallacies of the Wrong Level
+Most data in social science come from nested hierarchies--employees nested in work groups, which are nested in departments, which are nested in firms, and so forth. Before multilevel research became prominent, two main approaches were used: aggregation and disaggregation.
+However, these approaches often led to errors and fallacies when conclusions were drawn at the wrong level. For example, using organizational-level averages to make inferences about individual employees (or vice versa) can lead to ecological or atomistic fallacies.
+Illustrative Example:
+Ecological fallacy: Inferring individual-level conclusions from organizational-level data. Suppose a researcher averages employees' scores on satisfaction to represent the entire company. While this might show strong relationships at the company level, it does not necessarily translate to each individual. Atomistic fallacy: Inferring organizational-level conclusions from individual-level data. Assigning company-level characteristics to each individual without acknowledging the shared context leads to flawed interpretations.
+
+Multilevel research helps address these problems, acknowledging nested data structures and analyzing multiple levels simultaneously. This approach avoids issues like losing information or incorrectly generalizing findings across levels of analysis.
+Avoiding the Wrong Level Problems: Aggregation and Disaggregation
+Aggregation involves collecting data at a lower level (e.g., individual) and combining it into a single value at a higher level (e.g., organization). Disaggregation does the opposite, taking higher-level data and breaking it down to the lower level. Both can lead to errors when drawing conclusions about relationships between variables at a particular level if the analysis was carried out at another level.
+For instance, aggregating multiple employees' performance scores to get a company-wide average might be appropriate if the theoretical hypotheses focus on organizational-level phenomena. However, using that average to explain individual-level differences would be incorrect, leading to the ecological fallacy. Conversely, assigning a company-level indicator (such as overall performance) to each employee and analyzing data at the individual level would result in the atomistic fallacy.
+By acknowledging the inherently nested structures in data, multilevel research provides methods to handle multiple levels simultaneously. This avoids errors that arise from ignoring hierarchical levels and their dependencies.
+Aggregation and Ecological Fallacy
+Aggregation Case 1: If we have data on employees working in multiple companies, and all variables of interest are at the organizational level, we can safely average employee data to the company level. The analysis, carried out at the organizational level, is consistent with the theoretical level of interest. Aggregation Case 2 (Ecological Fallacy): Suppose our theoretical interest is at the individual (employee) level, yet we aggregate data to the organizational level. Interpreting organizational-level results as if they applied directly to individuals would be a mistake. By merging individual data into a single aggregate, we lose the variance within the company and risk drawing conclusions that do not hold at the individual level.
+For example, just because some company-level variable (like "corporate culture score") correlates strongly with aggregated performance does not mean that each individual employee's behavior follows the same pattern.
+Ecological Fallacy Explained
+Eliminating the variance within companies by aggregating individual data can produce statistically significant relationships at the organizational level. However, these relationships may not mirror the reality at the individual level. The problem is both statistical (loss of information) and conceptual (invalid inferences across levels).
+
+Statistical Problem: Combining individual data into fewer organizational observations loses information and reduces statistical power. Conceptual Problem: Interpreting organizational-level results as if they applied to individuals neglects the possibility that patterns differ across units.
+Disaggregation and Atomistic Fallacy
+Disaggregation does the opposite. For example, assigning a company-level measure (like "firm performance") to every employee suggests independence that does not exist. Employees within the same company share common influences. Analyzing them as if they were independent observations leads to the atomistic fallacy, where we cannot make valid inferences at the organizational level.
+Atomistic Fallacy and Independence
+Disaggregation Case 1: Taking company-level values and attributing them to each employee ignores the shared context. When we run individual-level analyses, we assume independence of observations. But employees in the same company are not independent; they share firm-level influences. Thus, disaggregation leads to incorrect interpretations, as no direct inference at the company level can be legitimately drawn from individual-level data.
+Key Takeaway: Aggregation and disaggregation can result in irrelevant conclusions. Multilevel research strategies solve these dilemmas by acknowledging the nested and hierarchical structure of data, enabling researchers to model multiple levels simultaneously and appropriately specify their theoretical and analytical frameworks.
+Basics in Multilevel Research
+This section introduces two foundational aspects:
+1. Foundational studies on multilevel research in management 2. Principles of multilevel research
+Foundational Studies on Multilevel Research
+Key principles, methodological foundations, and techniques were developed in fields like psychology and education before being introduced to management research. Early conceptual, theoretical, methodological, and empirical efforts in management originated mainly in micro areas, such as organizational behavior and psychology. These pioneers recognized the importance of examining nested data structures and integrating variables from multiple levels of analysis.
+Foundational Works and Principles
+
+Rousseau (1985) introduced key aspects of multilevel research to management and organizational behavior. Klein and Kozlowski's (2000) edited volume, "Multilevel theory, research and methods in organizations," was instrumental in clarifying the main foundations and consolidating this area within management. Yammarino and Dansereau published a series of edited volumes on multi-level issues between 2002 and 2009, further advancing this domain.
+Journals such as the Academy of Management Review, Journal of Management, Academy of Management Journal, and Organizational Research Methods have published special issues on multilevel research and the micro-macro divide, while methodological works and literature reviews have examined empirical studies using these approaches.
+Principles of Multilevel Research
+Multilevel research acknowledges that organizations are hierarchically nested systems, with entities at lower levels residing within higher-level units. For instance, employees are nested in teams or departments, which are nested in firms, which might be nested in industries or regions.
+Nested and Hierarchical Structures: Main Models and Relationships
+Key insights of multilevel research include:
+Recognizing multiple hierarchical levels (e.g., individual  team  organization  industry). Acknowledging that variables at one level can influence variables at another level. Understanding that influences might be reciprocal.
+For example, an industry-level regulation (macro) may shape organizational strategies (meso), which then affect team processes (micro), influencing individual performance at the lowest level. Similarly, bottom-up processes can aggregate individual-level changes to affect higher-level outcomes.
+Most multilevel studies focus on two levels, analyzing direct relationships (e.g., top-down or bottom-up models). A top-down model might consider how organizational resources influence employee motivation, while a bottom-up model might look at how employee satisfaction aggregates to influence firm-level profitability.
+Examples of Top-Down and Bottom-Up Models
+Top-Down Example (Human Resources): Organizational practice (L2)  Individual motivation (L1)  Individual performance (L1) Traditional techniques like hierarchical linear models (HLM) were developed for these top-down situations. Bottom-Up Example (Human Resources): Individual motivation (L1)  Organizational practice (L2)  Firm profitability (L2)
+
+Bottom-up models consider how lower-level phenomena influence higher-level outcomes.
+Not all hierarchies are strict. Sometimes, units at the lower level can belong to multiple units at the higher level, leading to more complex structures like cross-classification or multiple membership designs. For instance, a single employee (micro) might work on multiple projects (macro units) simultaneously, or a firm (micro) could be influenced by multiple strategic groups and regions (macro) in a non-pure hierarchy.
+Complexities in Multilevel Structures
+Some organizational data do not follow a strictly hierarchical structure. For example, in a standard two-level hierarchy, employees (Level 1) might be nested within firms (Level 2). However, in more complex scenarios, multiple macro levels coexist without a pure and strict hierarchy. This is known as cross-classification.
+Cross-Classification Example: A region (macro level) may contain firms belonging to different strategic groups. At the same time, these strategic groups might include firms located in various regions. Thus, a firm (micro level) is simultaneously nested in a strategic group and a region, but neither strategic group nor region strictly dominates the other level.
+Multiple Membership and Other Extensions
+Another extension involves multiple membership. For example, consider employees (micro level) like designers and managers who work on multiple games (macro level) simultaneously. In this scenario, each individual belongs to multiple macro units, complicating the structure further.
+Longitudinal Data as Multilevel Data Time can also define levels. For instance, repeated measures of a firm's productivity over several years can be considered a lower level nested within the firm, which is at a higher level. Each year's productivity is nested within the same firm, creating a time-based hierarchical structure.
+Assuming Dependency in Multilevel Research
+Multilevel research must address the lack of independence inherent in nested data structures. Consider students in a classroom: they share the same teacher, curriculum, and environment, which makes their outcomes more similar than if they were from different classrooms.
+When data are nested, the classical linear model assumption of independence is violated. Traditional regression analysis may produce incorrect p-values (lower than the correct ones) and increase the probability of Type I errors (rejecting true null hypotheses). Multilevel methods like HLM account for these dependencies, providing more accurate and reliable statistical inferences.
+
+Levels of Theory, Measurement, Data Source, and Analysis
+In multilevel research, it is critical to distinguish between the levels of theory, measurement, data source, and analysis:
+Level of Theory: The focal unit of generalization and the level at which a particular construct is predicted to operate. For example, if the theory suggests that a certain leadership style affects the firm's competitive strategy, the firm might be the theoretical level. Level of Measurement: The level at which a construct is observed or measured. A construct like "firm competitive strategy" is measured at the firm level. Level of Data Source: The level from which the data originate. For example, if managers report on the firm's competitive strategy, the data source is at the managerial (individual) level, even though the construct belongs at the firm level. Level of Analysis: The level at which data are assigned for hypothesis testing. This is where the statistical examination takes place.
+Aligning Levels for Valid Inference
+A multilevel approach requires careful alignment of theory, measurement, data source, and analysis levels. Misalignment leads to fallacies and invalid conclusions.
+For instance, if the theory states that a certain organizational practice influences individuallevel outcomes, but the data are aggregated to the organizational level, it may lead to ecological fallacy. Proper alignment ensures that constructs measured at one level can be legitimately used to test hypotheses at that same level, or that a theoretically and statistically justified aggregation process is applied.
+Additionally, to apply a multilevel analysis, there should be a logical expectation that higherlevel (macro) contextual variables influence lower-level (micro) outcomes. Statistical indices like the Intraclass Correlation Coefficient (ICC(1)) help justify this approach by showing how much of the variance in a lower-level dependent variable is due to higher-level factors.
+Multilevel Theory Without a Multilevel Design
+Not all theories that include multiple levels require multilevel designs. For example, upper echelons theory involves individual-level (CEO), group-level (top management team), and organizational-level factors. However, a particular study might focus solely on the organizational level, with one CEO and one top management team. In that case, a multilevel design is not strictly necessary because there are not multiple units at each level to justify a multilevel analysis.
+Theoretical, Methodological, and Analytical Aspects
+Defining theoretical and conceptual elements is the first crucial step in multilevel research. The theory must provide a clear rationale for how variables at different levels relate to each
+
+other, justify the constructs and their levels, and establish the processes connecting them. Often, multiple theories spanning different levels are integrated to explain complex organizational phenomena.
+Examples:
+Linking macro-level constructs (e.g., industry competition) with micro-level constructs (e.g., employee skills). Integrating theories that address constructs and relationships spanning individuals, groups, organizations, and environments.
+Building Multilevel Models
+Multilevel models may include within-level direct effects and cross-level direct effects. They can also incorporate cross-level mediation, where a variable at one level mediates the relationship between variables at another level, or cross-level moderation, where a higherlevel variable affects the strength of a relationship at a lower level.
+For example, consider a two-level model with individuals (Level 1) nested in firms (Level 2). At Level 1, you might measure employees' competencies and performance, while at Level 2, you might examine the firm's strategic orientation. The model could test if the firm's strategic orientation (L2) directly affects individual performance (L1) (a cross-level direct effect) or moderates the relationship between employee competencies and performance (a cross-level moderation).
+Sampling in multilevel research often occurs in stages, ensuring enough units at each level for adequate statistical power. A rule of thumb might be having around 30 organizations and 30 individuals per organization, although actual requirements depend on the complexity of the model and the effects being tested.
+Sampling and Data Collection in Multilevel Research
+Multilevel research may use both primary and secondary data. When collecting primary data, it is necessary to choose appropriate informants to avoid biases such as social desirability. For example, when studying leadership in teams, relying solely on leaders or supervisors to report on their leadership style may produce biased data. It might be better to collect information from both managers and employees, or from multiple respondents within the team, to ensure a balanced perspective.
+Moreover, the hierarchical levels must be clearly defined. If the study focuses on organizations and their employees, the researcher must consider not only how many organizations and employees are included, but also who among the employees should be surveyed and at what level of hierarchy or job function.
+Aggregation and Collective Constructs
+
+In multilevel research, some higher-level variables emerge from lower-level data. For instance, organizational culture (a higher-level construct) might be derived from aggregating employees' perceptions (lower-level data).
+This aggregation process must be both theoretically and statistically justified. Theoretically, there should be a reason why individual perceptions combine to form a collective construct. Statistically, measures like interrater agreement and reliability indices help verify that aggregating individual responses into a single group-level measure is valid.
+Two main principles guide the emergence of collective constructs:
+Composition: Lower-level units contribute equally, and simple descriptive statistics (like means) are appropriate. Compilation: Higher-level constructs emerge from complex combinations of lowerlevel inputs that cannot be represented by simple averages.
+Types of Collective Constructs: Global, Shared, and Configural
+Global Constructs: Descriptive characteristics of the group (e.g., firm size as the number of employees). These do not depend on individual perceptions and involve no aggregation across individuals. Shared Constructs: Valid when group members share similar perceptions. Homogeneity is key. For example, if all team members perceive the team climate similarly, their aggregated perceptions reflect a shared construct. Configural Constructs: More complex, where individuals may differ, and some may be more influential than others. Here, simple aggregation is not sufficient. Configural constructs arise from patterns of individual attributes or perceptions rather than their average.
+In all cases, careful attention to validity, reliability, and item wording is crucial. Surveys measuring collective constructs must be designed to ensure that lower-level data can legitimately represent higher-level phenomena.
+Analysis in Multilevel Research
+Multilevel analysis employs statistical techniques that respect nested data structures. Advances in methods for justifying aggregation and analyzing cross-level relationships allow researchers to test direct, moderation, and mediation effects across levels.
+For instance, a study might test whether a firm's strategy (L2) moderates the relationship between an employee's skill (L1) and their individual performance (L1). To do so, one can use indices of interrater agreement to justify aggregating individual perceptions, then apply multilevel modeling to analyze the cross-level interactions.
+Statistical Justification of Aggregation
+
+Indices like interrater agreement and interrater reliability help determine if individuals within the same group perceive phenomena similarly enough to justify treating that perception as a shared construct.
+Models and Techniques for Multilevel Analysis
+Two main groups of methods exist:
+1. Conventional Multilevel Modeling (e.g., HLM): Useful for top-down models, where macro-level context influences micro-level variables.
+2. Multilevel Structural Equation Modeling (MSEM): More advanced and flexible, allowing complex relationships including bottom-up effects and improved modeling of cross-level mediation.
+Conventional Multilevel Models and Their Limitations
+Conventional multilevel models work well for top-down relationships but have limitations in modeling bottom-up effects and certain cross-level mediation scenarios. They assume that higher-level variables primarily influence lower-level ones, but not necessarily the other way around.
+MSEM and Advanced Techniques
+MSEM and other advanced techniques have been developed to address these limitations. They allow the investigation of upward influences (from micro to macro) and complex mediation models. Software such as SPSS, MPlus, EQS, MLWiN, and HLM are available to conduct these analyses.
+Qualitative and Mixed Methods in Multilevel Research
+Multilevel research is not limited to quantitative methods. Qualitative approaches can explore mechanisms of emergence and better understand how individual-level behaviors aggregate into higher-level constructs (e.g., how individual employees' knowledge and skills combine to form organizational human capital).
+Combining quantitative and qualitative methods in a mixed-methods multilevel study can yield richer insights. For example, surveys and hierarchical modeling can test hypotheses about cross-level relationships, while interviews or case studies can clarify how and why these relationships unfold.
+References
+Arregle, J., Hebert, L., & Beamish, P. (2006). Mode of international entry: the advantages of multilevel methods. Management International Review, 46, 597-618.
+
+Bapuji, H., Hora, M., & Saeed, A. (2012). Intentions, intermediaries, and interaction: examining the emergence of routines. Journal of Management Studies, 49, 1586-1607.
+Distel, A. (2017). Unveiling the microfoundations of absorptive capacity: a study of Coleman's bathtub model. Journal of Management.
+González-Romá, V., & Hernández, A. (2017). Multilevel modeling: research-based lessons for substantive researchers. Annual Review of Organizational Psychology and Organizational Behavior, 4, 193-210.
+Guo, G. (2017). Demystifying variance in performance: a longitudinal multilevel perspective. Strategic Management Journal, 38, 1327-1342.
+Klein, K., & Kozlowski, S. (2000). Multilevel Theory, Research and Methods in Organizations: Foundations, Extensions and New Directions. Jossey-Bass, San Francisco.
+LeBreton, J., & Senter, J. (2008). Answers to 20 questions about interrater reliability and interrater agreement. Organizational Research Methods, 11, 815-852.
+Molina-Azorín, J. F., et al. (2019). Multilevel research: Foundations and opportunities in management. BRQ Business Research Quarterly.
+Rousseau, D. (1985). Issues of level in organizational research: multi-level and cross-level perspectives. Research in Organizational Behavior, 7, 1-37.
+Yammarino, F., & Dansereau, F. (2002). The Many Faces of Multi-level Issues. Research in Multi-level Issues, vol. 1. Elsevier, Oxford.
+Yammarino, F., & Dansereau, F. (2009). Multi-level Issues in Organizational Behavior and Leadership. Research in Multi-level Issues, vol. 8. Emerald.
+
+

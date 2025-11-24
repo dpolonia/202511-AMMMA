@@ -1,0 +1,72 @@
+# Top 10 Articles Analysis
+
+## 1. ‘Value-based methodology for person-centred, integrated care supported by Information and Communication Technologies’ (ValueCare) for older people in Europe: study protocol for a pre-post controlled trial
+**Score:** 24.0 | **Citations:** 8 | **Year:** 2022
+**Journal:** BMC Geriatrics
+**Authors:** Bally, E.L.S., van Grieken, A., Ye, L. et al.
+**Abstract Snippet:** Background: Older people receive care from multiple providers which often results in a lack of coordination. The Information and Communication Technology (ICT) enabled value-based methodology for integrated care (ValueCare) project aims to develop and implement efficient outcome-based, integrated he...
+
+
+## 2. Barriers and enablers to the implementation of patient-reported outcome and experience measures (PROMs/PREMs): protocol for an umbrella review
+**Score:** 23.0 | **Citations:** 6 | **Year:** 2024
+**Journal:** Systematic Reviews
+**Authors:** Fontaine, G., Poitras, M.-E., Sasseville, M. et al.
+**Abstract Snippet:** Background: Patient-reported outcome and experience measures (PROMs and PREMs, respectively) are evidence-based, standardized questionnaires that can be used to capture patients’ perspectives of their health and health care. While substantial investments have been made in the implementation of PROMs...
+
+
+## 3. Value-Based Healthcare From the Perspective of the Healthcare Professional: A Systematic Literature Review
+**Score:** 20.0 | **Citations:** 28 | **Year:** 2022
+**Journal:** Frontiers in Public Health
+**Authors:** van Engen, V., Bonfrer, I., Ahaus, K. et al.
+**Abstract Snippet:** Introduction: Healthcare systems increasingly move toward “value-based healthcare” (VBHC), aiming to further improve quality and performance of care as well as the sustainable use of resources. Evidence about healthcare professionals' contributions to VBHC, experienced job demands and resources as w...
+
+
+## 4. Implementation of large, multi-site hospital interventions: a realist evaluation of strategies for developing capability
+**Score:** 18.0 | **Citations:** 6 | **Year:** 2024
+**Journal:** BMC Health Services Research
+**Authors:** Long, J.C., Roberts, N., Francis-Auton, E. et al.
+**Abstract Snippet:** Background: This study presents guidelines for implementation distilled from the findings of a realist evaluation. The setting was local health districts in New South Wales, Australia that implemented three clinical improvement initiatives as part of a state-wide program. We focussed on implementati...
+
+
+## 5. Unmet needs and barriers in venous thromboembolism education and awareness among people living with cancer: a global survey
+**Score:** 17.5 | **Citations:** 5 | **Year:** 2024
+**Journal:** Journal of Thrombosis and Haemostasis
+**Authors:** Potere, N., Mahé, I., Angchaisuksiri, P. et al.
+**Abstract Snippet:** Background: Venous thromboembolism (VTE) is a major preventable cause of morbidity, disability, and mortality in subjects with cancer. A global appraisal of cancer-associated VTE education and awareness is not available. Objectives: To evaluate VTE-related education, awareness, and unmet needs from ...
+
+
+## 6. Enhancing Clinicians’ Use of Electronic Patient-Reported Outcome Measures in Outpatient Care: Mixed Methods Study
+**Score:** 15.5 | **Citations:** 1 | **Year:** 2024
+**Journal:** Journal of Medical Internet Research
+**Authors:** van Engen, V., Bonfrer, I., Ahaus, K. et al.
+**Abstract Snippet:** Background: Despite the increasing use of patient-reported outcome measures (PROMs) for collecting self-reported data among hospital outpatients, clinicians’ use of these data remains suboptimal. Insight into this issue and strategies to enhance the use of PROMs are critical but limited. Objective: ...
+
+
+## 7. The application of project management theory in hospital management: Bibliometric analysis based on web of science database
+**Score:** 15.0 | **Citations:** 0 | **Year:** 2025
+**Journal:** Edelweiss Applied Science and Technology
+**Authors:** Liu, Y., Mohd Shafiei, M.W.M. et al.
+**Abstract Snippet:** This investigation analyzes the incorporation of theoretical frameworks in project management within the context of hospital administration through a bibliometric evaluation of publications in the Web of Science from 2014 to 2024 using CiteSpace. An analysis of contributions by 7,020 researchers in ...
+
+
+## 8. What are the perspectives of patients with hand and wrist conditions, chronic pain, and patients recovering from stroke on the use of patient and outcome information in everyday care? A Mixed-Methods study
+**Score:** 15.0 | **Citations:** 0 | **Year:** 2024
+**Journal:** Quality of Life Research
+**Authors:** Arends, G.R., Loos, N.L., van Kooij, Y.E. et al.
+**Abstract Snippet:** Purpose: To evaluate the patients’ perspectives on the use of patient- and outcome information tools in everyday care and to investigate which characteristics affect general understanding and perceived value of patient- and outcome information. Methods: This mixed-methods study included surveys and ...
+
+
+## 9. Early palliative care for solid and blood cancer patients and caregivers: Quantitative and qualitative results of a long-term experience as a case of value-based medicine
+**Score:** 15.0 | **Citations:** 13 | **Year:** 2023
+**Journal:** Frontiers in Public Health
+**Authors:** Bigi, S., Borelli, E., Potenza, L. et al.
+**Abstract Snippet:** Introduction: Cancer patients and their caregivers have substantial unmet needs, that negatively impact the clinical outcome and quality of life. However, interventions aimed to address such needs are still suboptimal, failing to answer the recent healthcare call for the adoption of value-based mode...
+
+
+## 10. A Comparison of Census and Cohort Sampling Models for the Longitudinal Collection of User-Reported Data in the Maternity Care Pathway: Mixed Methods Study
+**Score:** 15.0 | **Citations:** 10 | **Year:** 2022
+**Journal:** JMIR Medical Informatics
+**Authors:** Jamieson Gilmore, K.J., Bonciani, M., Vainieri, M. et al.
+**Abstract Snippet:** Background: Typical measures of maternity performance remain focused on the technical elements of birth, especially pathological elements, with insufficient measurement of nontechnical measures and those collected pre- and postpartum. New technologies allow for patient-reported outcome measures (PRO...
+
+

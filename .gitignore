@@ -1,0 +1,43 @@
+# Environment variables
+.env
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Virtual environments
+venv/
+env/
+ENV/
+
+# Generated data files
+llm_config.json
+scopus_results.json
+graded_papers.json
+top_20_papers.md
+evaluation_draft.md
+evaluation_draft_v2.md
+evaluation_final.md
+adversarial_critique_round1.md
+adversarial_critique_round2.md
+shortcomings_assessment.md
+final_report.md
+presentation.md
+related_papers_metadata.json
+
+# Selected paper directory
+selected_paper/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
