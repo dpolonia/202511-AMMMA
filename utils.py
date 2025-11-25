@@ -71,9 +71,27 @@ def extract_pdf_text(pdf_path: Path, output_path: Optional[Path] = None) -> str:
             text = f.read()
         
         return text
-    except subprocess.CalledProcessError as e:
-        print(f"Error extracting PDF: {e}")
-        return ""
+    except (subprocess.CalledProcessError, FileNotFoundError) as e:
+        print(f"⚠️ pdftotext failed or not found ({e}). Trying pypdf fallback...")
+        try:
+            import pypdf
+            reader = pypdf.PdfReader(pdf_path)
+            text = ""
+            for page in reader.pages:
+                text += page.extract_text() + "\n"
+            
+            # Save to output path if requested
+            if output_path:
+                with open(output_path, 'w', encoding='utf-8') as f:
+                    f.write(text)
+            
+            return text
+        except ImportError:
+            print("✗ pypdf not installed. Please install it: pip install pypdf")
+            return ""
+        except Exception as e2:
+            print(f"✗ pypdf extraction failed: {e2}")
+            return ""
 
 def scopus_search(query: str, api_key: str, max_results: int = 200) -> List[Dict]:
     """

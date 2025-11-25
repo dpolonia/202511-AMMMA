@@ -38,7 +38,9 @@ XAI_API_KEY=your_xai_key              # Optional
 ### Python Dependencies
 
 ```bash
-pip install requests python-dotenv
+pip install -r requirements.txt
+# Or manually:
+pip install requests python-dotenv pypdf
 ```
 
 ## Quick Start
@@ -338,10 +340,15 @@ If automatic download fails:
 
 ### Text Extraction Issues
 
-If `pdftotext` fails:
-1. Verify `poppler-utils` is installed
-2. Check PDF is not encrypted/protected
-3. Try manual text extraction
+### Text Extraction Issues
+
+The workflow automatically falls back to `pypdf` if `pdftotext` is not available.
+
+If both fail:
+1. Verify `pypdf` is installed (`pip install pypdf`)
+2. For better results, install `poppler-utils` (see Prerequisites)
+3. Check PDF is not encrypted/protected
+4. Try manual text extraction
 
 ## Known Limitations
 
