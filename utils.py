@@ -9,6 +9,42 @@ import re
 from pathlib import Path
 from typing import Dict, List, Optional
 import config
+import os
+import time
+
+def get_user_input(prompt_text: str, default: str = None) -> str:
+    """
+    Get input from user or from environment variable if in demo mode.
+    
+    Args:
+        prompt_text: Text to display to user
+        default: Default value if user just presses Enter (or for demo fallback)
+        
+    Returns:
+        Input string
+    """
+    demo_inputs_env = os.getenv("AMMMA_DEMO_INPUTS")
+    
+    if demo_inputs_env:
+        try:
+            # Parse JSON list of inputs
+            inputs = json.loads(demo_inputs_env)
+            
+            # Get the next input
+            if inputs:
+                next_input = inputs.pop(0)
+                
+                # Update the environment variable for the next call
+                os.environ["AMMMA_DEMO_INPUTS"] = json.dumps(inputs)
+                
+                print(f"{prompt_text} {next_input} (AUTO-DEMO)")
+                time.sleep(0.5) # Small delay for readability
+                return next_input
+        except Exception as e:
+            print(f"Error parsing demo inputs: {e}")
+            
+    # Standard input
+    return input(prompt_text)
 
 def extract_pdf_text(pdf_path: Path, output_path: Optional[Path] = None) -> str:
     """

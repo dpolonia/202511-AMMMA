@@ -35,7 +35,7 @@ def customize_weights() -> Dict:
     print(f"  - Citations: {config.GRADING_WEIGHTS['impact']['citations_max']}")
     
     print("\n" + "-"*60)
-    customize = input("\nWould you like to customize these weights? (y/n): ").lower().strip()
+    customize = utils.get_user_input("\nWould you like to customize these weights? (y/n): ").lower().strip()
     
     if customize != 'y':
         print("Using default weights.")
@@ -111,7 +111,7 @@ def customize_weights() -> Dict:
 def get_weight_input(name: str, default: float) -> float:
     """Get weight input from user with default fallback."""
     while True:
-        user_input = input(f"{name} [{default}]: ").strip()
+        user_input = utils.get_user_input(f"{name} [{default}]: ").strip()
         if not user_input:
             return default
         try:
@@ -281,19 +281,28 @@ def grade_paper(paper: Dict, weights: Dict = None) -> Dict:
     # Citation score
     citation_score = score_citations(paper.get('cited_by_count', 0), weights)
     
-    # Calculate total score
-    total_score = (
+    # Calculate class relevance subtotal
+    class_relevance_subtotal = (
         multilevel_scores['strong'] +
         multilevel_scores['weak'] +
         mixed_methods_scores['explicit'] +
-        mixed_methods_scores['implicit'] +
-        vbhc_score +
-        nhs_score +
-        portugal_score +
-        journal_scores['citescore'] +
-        journal_scores['sjr'] +
-        citation_score
+        mixed_methods_scores['implicit']
     )
+    
+    # Check minimum threshold: Class Relevance cannot be zero
+    if class_relevance_subtotal == 0:
+        total_score = 0
+    else:
+        # Calculate total score normally
+        total_score = (
+            class_relevance_subtotal +
+            vbhc_score +
+            nhs_score +
+            portugal_score +
+            journal_scores['citescore'] +
+            journal_scores['sjr'] +
+            citation_score
+        )
     
     # Add grading information to paper
     paper['grading'] = {

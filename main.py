@@ -43,6 +43,9 @@ def setup_run_environment():
 # Now import config after setup (or it will be reloaded)
 import config
 
+import sys
+import importlib.util
+
 def print_header(phase_name: str):
     """Print phase header."""
     print("\n" + "="*70)
@@ -65,7 +68,17 @@ def run_phase(phase_num: str, phase_name: str, module_name: str) -> bool:
     
     try:
         # Dynamically import and run the phase module
-        module = __import__(module_name)
+        # Use importlib to handle filenames with dots (e.g., 04.5)
+        file_path = Path(f"{module_name}.py").resolve()
+        if not file_path.exists():
+            print(f"\n❌ Error: Module file not found: {file_path}")
+            return False
+            
+        spec = importlib.util.spec_from_file_location(module_name, file_path)
+        module = importlib.util.module_from_spec(spec)
+        sys.modules[module_name] = module
+        spec.loader.exec_module(module)
+        
         result = module.main()
         
         if result:
@@ -76,6 +89,8 @@ def run_phase(phase_num: str, phase_name: str, module_name: str) -> bool:
             return False
     except Exception as e:
         print(f"\n✗ Error in Phase {phase_num}: {e}")
+        import traceback
+        traceback.print_exc()
         return False
 
 def main():
@@ -84,7 +99,10 @@ def main():
     print("  PAPER ANALYSIS WORKFLOW - FULL EXECUTION")
     print("="*70)
     
-    proceed = input("\nProceed with full workflow? (y/n): ").lower().strip()
+    # Import utils if not already imported (it should be via run_phase but main needs it too)
+    import utils
+    
+    proceed = utils.get_user_input("\nProceed with full workflow? (y/n): ").lower().strip()
     if proceed != 'y':
         print("Workflow cancelled.")
         return

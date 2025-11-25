@@ -44,14 +44,18 @@ pip install requests python-dotenv
 ## Quick Start
 
 ### Option 1: Run Full Workflow
-
 ```bash
 python main.py
 ```
-
 This runs all phases sequentially with interactive prompts.
 
-### Option 2: Run Individual Phases
+### Option 2: Run Automated Demo
+```bash
+python run_demo.py
+```
+This runs the workflow in automated mode using a predefined PDF and inputs. Ideal for testing and demonstration.
+
+### Option 3: Run Individual Phases
 
 ```bash
 # Phase 0: Select LLMs

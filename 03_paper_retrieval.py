@@ -9,6 +9,7 @@ from pathlib import Path
 from typing import Dict, Optional
 import config
 import utils
+import os
 
 def display_top_papers(graded_papers: list, num_papers: int = 20):
     """Display top N papers for user selection."""
@@ -30,7 +31,7 @@ def select_paper(graded_papers: list) -> Dict:
     """Interactive paper selection."""
     while True:
         try:
-            choice = int(input(f"\nSelect paper number (1-20): "))
+            choice = int(utils.get_user_input(f"\nSelect paper number (1-{min(20, len(graded_papers))}): ").strip())
             if 1 <= choice <= min(20, len(graded_papers)):
                 return graded_papers[choice - 1]
             print(f"Please enter a number between 1 and {min(20, len(graded_papers))}")
@@ -128,7 +129,23 @@ def manual_upload_prompt(paper: Dict) -> Optional[Path]:
     print(f"\nPlease save the PDF to: {config.SELECTED_PAPER_DIR}")
     print(f"Filename: paper.pdf")
     
-    input("\nPress Enter once you've placed the PDF in the folder...")
+    # Ensure directory exists
+    config.SELECTED_PAPER_DIR.mkdir(parents=True, exist_ok=True)
+    
+    # Check for demo PDF injection
+    demo_pdf = os.getenv("AMMMA_DEMO_PDF_PATH")
+    if demo_pdf and os.path.exists(demo_pdf):
+        print(f"\n[DEMO MODE] Injecting PDF from: {demo_pdf}")
+        import shutil
+        target_path = config.SELECTED_PAPER_DIR / "paper.pdf"
+        try:
+            shutil.copy2(demo_pdf, target_path)
+            print("✓ PDF injected successfully")
+            return target_path
+        except Exception as e:
+            print(f"✗ Failed to inject demo PDF: {e}")
+            
+    utils.get_user_input("\nPress Enter once you've placed the PDF in the folder...")
     
     # Check if file exists
     pdf_path = config.SELECTED_PAPER_DIR / "paper.pdf"

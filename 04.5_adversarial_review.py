@@ -57,7 +57,7 @@ def get_user_comments() -> str:
     print("  1. Enter comments (type your feedback, then press Enter twice)")
     print("  2. Skip (press Enter to continue without comments)")
     
-    choice = input("\nAdd comments? (y/n): ").lower().strip()
+    choice = utils.get_user_input("\nAdd comments? (y/n): ").lower().strip()
     
     if choice != 'y':
         return ""
@@ -69,7 +69,7 @@ def get_user_comments() -> str:
     empty_count = 0
     
     while True:
-        line = input()
+        line = utils.get_user_input("")
         if line == "":
             empty_count += 1
             if empty_count >= 2:
@@ -234,7 +234,7 @@ def user_wants_to_continue() -> bool:
     print("  1. Continue - Start another round of critique and refinement")
     print("  2. Finalize - Accept current version as final")
     
-    choice = input("\nContinue with another iteration? (y/n): ").lower().strip()
+    choice = utils.get_user_input("\nContinue with another iteration? (y/n): ").lower().strip()
     
     return choice == 'y'
 

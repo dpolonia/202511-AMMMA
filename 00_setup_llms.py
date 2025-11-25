@@ -6,6 +6,7 @@ Interactive selection of Development and Devil's Advocate LLMs.
 import json
 from pathlib import Path
 import config
+import utils
 
 def detect_available_llms():
     """Detect which LLM APIs have valid keys."""
@@ -77,7 +78,7 @@ def select_llm(available_llms, role="Development"):
     
     while True:
         try:
-            choice = int(input(f"\nEnter choice (1-{len(providers)}): "))
+            choice = int(utils.get_user_input(f"\nEnter choice (1-{len(providers)}): ").strip())
             if 1 <= choice <= len(providers):
                 selected_provider = providers[choice - 1]
                 break
@@ -96,7 +97,7 @@ def select_llm(available_llms, role="Development"):
     
     while True:
         try:
-            choice = int(input(f"\nEnter choice (1-{len(models)}): "))
+            choice = int(utils.get_user_input(f"\nEnter choice (1-{len(models)}): ").strip())
             if 1 <= choice <= len(models):
                 selected_model_key, selected_model_id = models[choice - 1]
                 break
